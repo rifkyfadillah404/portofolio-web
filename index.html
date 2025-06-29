@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <title>Portfolio - Muhammad Rifky Fadillah</title>
   </head>
   <body>
@@ -107,10 +109,17 @@
                 <span>CSS3</span>
               </div>
               <div class="skill-item">
+                <i class="fab fa-js-square"></i>
+                <span>JavaScript</span>
+              </div>
+              <div class="skill-item">
+                <img src="https://cdn.simpleicons.org/alpinedotjs/8BC34A" alt="Alpine.js" class="skill-icon" />
+                <span>Alpine.js</span>
+              </div>
+              <div class="skill-item">
                 <img src="https://cdn.simpleicons.org/flutter/02569B" alt="Flutter" class="skill-icon" />
                 <span>Flutter</span>
               </div>
-
               <div class="skill-item">
                 <i class="fab fa-react"></i>
                 <span>React</span>
@@ -131,6 +140,10 @@
               <div class="skill-item">
                 <i class="fab fa-node-js"></i>
                 <span>Node.js</span>
+              </div>
+              <div class="skill-item">
+                <img src="https://cdn.simpleicons.org/express/000000" alt="Express.js" class="skill-icon" />
+                <span>Express.js</span>
               </div>
               <div class="skill-item">
                 <i class="fas fa-database"></i>
@@ -171,12 +184,12 @@
         <div class="projects-grid">
           <div class="project-card">
             <div class="project-image">
-              <i class="fas fa-boxes"></i>
+             <img src="assets/sisfo-sarpas.png" alt="sisfo-sarpas">
             </div>
             <div class="project-content">
               <h3>Sisfo-Sarpas</h3>
               <p>
-                Sisfo sarpas is a web-based application I developed to manage the process of <strong>borrowing and returning school assets</strong> such as equipment, tools, or other inventory items. The goal of this system is to digitize
+                Sisfo sarpas is a web-based application I developed to manage the process of borrowing and returning school assets such as equipment, tools, or other inventory items. The goal of this system is to digitize
                 the borrowing process, making it easier and more efficient for staff and students.
               </p>
               <div class="project-tech">
@@ -193,15 +206,38 @@
               </div>
             </div>
           </div>
-
+          
           <div class="project-card">
             <div class="project-image">
-              <i class="fas fa-store"></i>
+              <img src="assets/goodfood.png" alt="goodfood">
             </div>
             <div class="project-content">
               <h3>Starbhak-Mart</h3>
               <p>
-                Starbhak Mart is a web-based food ordering application developed entirely using Laravel. This project aims to simplify the food ordering process within a school environment by allowing users to browse menus, place orders,
+                Starbhak-Mart a mobile food ordering application built using Flutter for the frontend and Supabase as the backend service and database. The app provides a smooth and user-friendly experience for browsing food menus, placing
+                orders, and tracking order status in real-time. It is designed to be cross-platform, running seamlessly on both Android and iOS devices.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">SupaBase</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/rifkyfadillah404/GoodFood" class="project-link">
+                  <i class="fab fa-github"></i>
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="project-card">
+            <div class="project-image">
+              <img src="assets/starbhakmart.png" alt="starbhakmart">
+            </div>
+            <div class="project-content">
+              <h3>GoodFood</h3>
+              <p>
+                GoodFood a web-based food ordering application developed entirely using Laravel. This project aims to simplify the food ordering process within a school environment by allowing users to browse menus, place orders,
                 and manage transactions online through a clean and responsive interface.
               </p>
               <div class="project-tech">
@@ -221,30 +257,7 @@
 
           <div class="project-card">
             <div class="project-image">
-              <i class="fas fa-utensils"></i>
-            </div>
-            <div class="project-content">
-              <h3>GoodFood</h3>
-              <p>
-                GoodFood is a mobile food ordering application built using Flutter for the frontend and Supabase as the backend service and database. The app provides a smooth and user-friendly experience for browsing food menus, placing
-                orders, and tracking order status in real-time. It is designed to be cross-platform, running seamlessly on both Android and iOS devices.
-              </p>
-              <div class="project-tech">
-                <span class="tech-tag">Flutter</span>
-                <span class="tech-tag">SupaBase</span>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/rifkyfadillah404/GoodFood" class="project-link">
-                  <i class="fab fa-github"></i>
-                  GitHub
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-image">
-              <i class="fas fa-utensils"></i>
+              <img src="assets/quickshop.png" alt="profile" />
             </div>
             <div class="project-content">
               <h3>QuickShop</h3>
@@ -255,8 +268,9 @@
               </p>
               <div class="project-tech">
                 <span class="tech-tag">Laravel</span>
+                <span class="tech-tag">MySQL</span>
                 <span class="tech-tag">Filament</span>
-                <span class="tech-tag">Payment Getway Xendit</span>
+                <span class="tech-tag">Payment Gateway Xendit</span>
               </div>
               <div class="project-links">
                 <a href="https://github.com/rifkyfadillah404/quick-shop" class="project-link">
@@ -319,10 +333,10 @@
           <div class="contact-form">
             <form id="contact-form">
               <div class="form-group">
-                <input type="text" id="name" name="name" placeholder="Your Name" required />
+                <input type="text" id="name" name="from_name" placeholder="Your Name" required />
               </div>
               <div class="form-group">
-                <input type="email" id="email" name="email" placeholder="Your Email" required />
+                <input type="email" id="email" name="from_email" placeholder="Your Email" required />
               </div>
               <div class="form-group">
                 <input type="text" id="subject" name="subject" placeholder="Subject" required />

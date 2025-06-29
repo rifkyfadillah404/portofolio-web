@@ -98,44 +98,99 @@ document.addEventListener("DOMContentLoaded", () => {
   animateElements.forEach((el) => observer.observe(el));
 });
 
+// EmailJS Configuration
+const EMAILJS_CONFIG = {
+  serviceID: "service_69gr4il",
+  templateID: "template_tcoj6tn",
+  publicKey: "BS9Cxwt-fCxbX9qce",
+};
+
+// Initialize EmailJS
+(function () {
+  emailjs.init(EMAILJS_CONFIG.publicKey);
+})();
+
 // Contact form handling
 const contactForm = document.getElementById("contact-form");
 contactForm.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  // Get form data
+  // Get form data for validation
   const formData = new FormData(this);
-  const name = formData.get("name");
-  const email = formData.get("email");
+  const name = formData.get("from_name");
+  const email = formData.get("from_email");
   const subject = formData.get("subject");
   const message = formData.get("message");
 
   // Simple validation
   if (!name || !email || !subject || !message) {
-    alert("Please fill in all fields");
+    showNotification("Please fill in all fields", "error");
     return;
   }
 
   // Email validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
-    alert("Please enter a valid email address");
+    showNotification("Please enter a valid email address", "error");
     return;
   }
 
-  // Simulate form submission
+  // Show loading state
   const submitBtn = this.querySelector('button[type="submit"]');
   const originalText = submitBtn.textContent;
   submitBtn.textContent = "Sending...";
   submitBtn.disabled = true;
 
-  setTimeout(() => {
-    alert("Thank you for your message! I'll get back to you soon.");
-    this.reset();
-    submitBtn.textContent = originalText;
-    submitBtn.disabled = false;
-  }, 2000);
+  // Send email using EmailJS
+  emailjs
+    .sendForm(EMAILJS_CONFIG.serviceID, EMAILJS_CONFIG.templateID, this)
+    .then(function (response) {
+      console.log("SUCCESS!", response.status, response.text);
+      showNotification("Message sent successfully! Thank you for contacting me.", "success");
+      contactForm.reset();
+    })
+    .catch(function (error) {
+      console.log("FAILED...", error);
+      showNotification("Failed to send message. Please try again or contact me directly.", "error");
+    })
+    .finally(function () {
+      // Reset button state
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    });
 });
+
+// Notification function
+function showNotification(message, type = "info") {
+  // Remove existing notifications
+  const existingNotification = document.querySelector(".notification");
+  if (existingNotification) {
+    existingNotification.remove();
+  }
+
+  // Create notification element
+  const notification = document.createElement("div");
+  notification.className = `notification notification-${type}`;
+  notification.innerHTML = `
+    <span>${message}</span>
+    <button class="notification-close">&times;</button>
+  `;
+
+  // Add to page
+  document.body.appendChild(notification);
+
+  // Auto remove after 5 seconds
+  setTimeout(() => {
+    if (notification.parentNode) {
+      notification.remove();
+    }
+  }, 5000);
+
+  // Close button functionality
+  notification.querySelector(".notification-close").addEventListener("click", () => {
+    notification.remove();
+  });
+}
 
 // Add loading animation to buttons
 document.querySelectorAll(".btn").forEach((btn) => {

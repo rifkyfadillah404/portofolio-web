@@ -87,7 +87,13 @@ const observerOptions = {
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
+      // Add animation when element enters viewport
       entry.target.classList.add("fade-in-up");
+      entry.target.classList.remove("fade-out-down");
+    } else {
+      // Remove animation when element leaves viewport
+      entry.target.classList.remove("fade-in-up");
+      entry.target.classList.add("fade-out-down");
     }
   });
 }, observerOptions);

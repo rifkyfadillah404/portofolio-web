@@ -1185,8 +1185,23 @@ section {
   }
 }
 
+@keyframes fadeOutDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+}
+
 .fade-in-up {
-  animation: fadeInUp 0.6s ease-out;
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.fade-out-down {
+  animation: fadeOutDown 0.6s ease-out forwards;
 }
 
 /* Smooth scrolling for older browsers */

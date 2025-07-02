@@ -87,13 +87,21 @@ const observerOptions = {
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
-      // Add animation when element enters viewport
-      entry.target.classList.add("fade-in-up");
-      entry.target.classList.remove("fade-out-down");
+      // Special handling for skill items
+      if (entry.target.classList.contains("skill-item")) {
+        console.log("Skill item entering viewport:", entry.target); // Debug log
+        entry.target.classList.add("animate-in");
+      } else {
+        // Add animation when element enters viewport
+        entry.target.classList.add("fade-in-up");
+        entry.target.classList.remove("fade-out-down");
+      }
     } else {
-      // Remove animation when element leaves viewport
-      entry.target.classList.remove("fade-in-up");
-      entry.target.classList.add("fade-out-down");
+      // Remove animation when element leaves viewport (but keep skill items animated once triggered)
+      if (!entry.target.classList.contains("skill-item")) {
+        entry.target.classList.remove("fade-in-up");
+        entry.target.classList.add("fade-out-down");
+      }
     }
   });
 }, observerOptions);
@@ -102,6 +110,29 @@ const observer = new IntersectionObserver((entries) => {
 document.addEventListener("DOMContentLoaded", () => {
   const animateElements = document.querySelectorAll(".section-title, .about-text, .skill-category, .project-card, .contact-info, .contact-form");
   animateElements.forEach((el) => observer.observe(el));
+
+  // Observe skill items for scroll animation with a slight delay to ensure DOM is ready
+  setTimeout(() => {
+    const skillItems = document.querySelectorAll(".skill-item");
+    console.log("Found skill items:", skillItems.length); // Debug log
+    skillItems.forEach((item, index) => {
+      observer.observe(item);
+      console.log(`Observing skill item ${index + 1}`); // Debug log
+
+      // Add a subtle entrance animation delay
+      item.style.transitionDelay = `${index * 0.1}s`;
+    });
+  }, 100);
+
+  // Add continuous animations to skill items after they're loaded
+  setTimeout(() => {
+    const skillItems = document.querySelectorAll(".skill-item");
+    skillItems.forEach((item) => {
+      // Add random floating animation delays
+      const randomDelay = Math.random() * 2;
+      item.style.setProperty("--float-delay", `${randomDelay}s`);
+    });
+  }, 1000);
 });
 
 // EmailJS Configuration
@@ -326,5 +357,43 @@ function createMatrixRain() {
 
 // Initialize matrix rain
 setTimeout(createMatrixRain, 2000);
+
+// Toggle Description Function for Show More/Less with smooth animation
+function toggleDescription(button) {
+  const projectDescription = button.closest(".project-description");
+  const shortDesc = projectDescription.querySelector(".description-short");
+  const fullDesc = projectDescription.querySelector(".description-full");
+
+  if (fullDesc.classList.contains("show")) {
+    // Hide full description
+    fullDesc.classList.remove("show");
+    fullDesc.classList.add("hide");
+
+    setTimeout(() => {
+      fullDesc.style.display = "none";
+      shortDesc.style.display = "block";
+      shortDesc.classList.add("show");
+    }, 300);
+
+    button.textContent = "Show More";
+    button.style.background = "linear-gradient(135deg, #00d4ff 0%, #ff00ff 100%)";
+  } else {
+    // Show full description
+    shortDesc.style.display = "none";
+    shortDesc.classList.remove("show");
+    fullDesc.style.display = "block";
+
+    setTimeout(() => {
+      fullDesc.classList.add("show");
+      fullDesc.classList.remove("hide");
+    }, 10);
+
+    button.textContent = "Show Less";
+    button.style.background = "linear-gradient(135deg, #ff00ff 0%, #00d4ff 100%)";
+  }
+}
+
+// Make toggleDescription function globally available
+window.toggleDescription = toggleDescription;
 
 console.log("Modern dark portfolio loaded successfully!");

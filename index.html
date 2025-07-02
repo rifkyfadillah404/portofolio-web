@@ -95,83 +95,67 @@
     <!-- Skills Section -->
     <section id="skills" class="skills">
       <div class="container">
-        <h2 class="section-title">Skills & Technologies</h2>
-        <div class="skills-grid">
-          <div class="skill-category">
-            <h3>Frontend</h3>
-            <div class="skill-items">
-              <div class="skill-item">
-                <i class="fab fa-html5"></i>
-                <span>HTML5</span>
-              </div>
-              <div class="skill-item">
-                <i class="fab fa-css3-alt"></i>
-                <span>CSS3</span>
-              </div>
-              <div class="skill-item">
-                <i class="fab fa-js-square"></i>
-                <span>JavaScript</span>
-              </div>
-              <div class="skill-item">
-                <img src="https://cdn.simpleicons.org/alpinedotjs/8BC34A" alt="Alpine.js" class="skill-icon" />
-                <span>Alpine.js</span>
-              </div>
-              <div class="skill-item">
-                <img src="https://cdn.simpleicons.org/flutter/02569B" alt="Flutter" class="skill-icon" />
-                <span>Flutter</span>
-              </div>
-              <div class="skill-item">
-                <i class="fab fa-react"></i>
-                <span>React</span>
-              </div>
-            </div>
+        <h2 class="section-title">Tech Stack & Tools</h2>
+        <div class="tech-stack-grid">
+          <div class="skill-item">
+            <i class="fab fa-html5"></i>
+            <span>HTML5</span>
           </div>
-          <div class="skill-category">
-            <h3>Backend</h3>
-            <div class="skill-items">
-              <div class="skill-item">
-                <i class="fab fa-php"></i>
-                <span>PHP</span>
-              </div>
-              <div class="skill-item">
-                <i class="fab fa-laravel"></i>
-                <span>Laravel</span>
-              </div>
-              <div class="skill-item">
-                <i class="fab fa-node-js"></i>
-                <span>Node.js</span>
-              </div>
-              <div class="skill-item">
-                <img src="https://cdn.simpleicons.org/express/000000" alt="Express.js" class="skill-icon" />
-                <span>Express.js</span>
-              </div>
-              <div class="skill-item">
-                <i class="fas fa-database"></i>
-                <span>MySQL</span>
-              </div>
-            </div>
+          <div class="skill-item">
+            <i class="fab fa-css3-alt"></i>
+            <span>CSS3</span>
           </div>
-          <div class="skill-category">
-            <h3>Tools</h3>
-            <div class="skill-items">
-              <div class="skill-item">
-                <i class="fab fa-git-alt"></i>
-                <span>Git</span>
-              </div>
-              <div class="skill-item">
-                <i class="fab fa-github"></i>
-                <span>GitHub</span>
-              </div>
-              <div class="skill-item">
-                <img src="https://cdn.simpleicons.org/postman/FF6C37" alt="Postman" class="skill-icon" />
-                <span>Postman</span>
-              </div>
-
-              <div class="skill-item">
-                <i class="fab fa-figma"></i>
-                <span>Figma</span>
-              </div>
-            </div>
+          <div class="skill-item">
+            <i class="fab fa-js-square"></i>
+            <span>JavaScript</span>
+          </div>
+          <div class="skill-item">
+            <img src="https://cdn.simpleicons.org/alpinedotjs/8BC34A" alt="Alpine.js" class="skill-icon" />
+            <span>Alpine.js</span>
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-react"></i>
+            <span>React</span>
+          </div>
+          <div class="skill-item">
+            <img src="https://cdn.simpleicons.org/flutter/02569B" alt="Flutter" class="skill-icon" />
+            <span>Flutter</span>
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-php"></i>
+            <span>PHP</span>
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-laravel"></i>
+            <span>Laravel</span>
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-node-js"></i>
+            <span>Node.js</span>
+          </div>
+          <div class="skill-item">
+            <img src="https://cdn.simpleicons.org/express/000000" alt="Express.js" class="skill-icon" />
+            <span>Express.js</span>
+          </div>
+          <div class="skill-item">
+            <i class="fas fa-database"></i>
+            <span>MySQL</span>
+          </div>
+          <div class="skill-item tools-item">
+            <i class="fab fa-git-alt"></i>
+            <span>Git</span>
+          </div>
+          <div class="skill-item tools-item">
+            <i class="fab fa-github"></i>
+            <span>GitHub</span>
+          </div>
+          <div class="skill-item tools-item">
+            <img src="https://cdn.simpleicons.org/postman/FF6C37" alt="Postman" class="skill-icon" />
+            <span>Postman</span>
+          </div>
+          <div class="skill-item tools-item">
+            <i class="fab fa-figma"></i>
+            <span>Figma</span>
           </div>
         </div>
       </div>
@@ -188,10 +172,15 @@
             </div>
             <div class="project-content">
               <h3>Sisfo-Sarpas</h3>
-              <p>
-                Sisfo sarpas is a web-based application I developed to manage the process of borrowing and returning school assets such as equipment, tools, or other inventory items. The goal of this system is to digitize the borrowing
-                process, making it easier and more efficient for staff and students.
-              </p>
+              <div class="project-description">
+                <p class="description-short">Sisfo sarpas is a web-based application I developed to manage the process of borrowing and returning school assets such as equipment, tools, or other inventory items.</p>
+                <p class="description-full" style="display: none">
+                  The goal of this system is to digitize the borrowing process, making it easier and more efficient for staff and students. The system includes features like asset tracking, user management, borrowing history, return
+                  notifications, and detailed reporting for administrators. Built with modern web technologies, it provides a seamless experience for both administrators and users, with real-time updates and comprehensive reporting
+                  capabilities.
+                </p>
+                <button class="show-more-btn" onclick="toggleDescription(this)">Show More</button>
+              </div>
               <div class="project-tech">
                 <span class="tech-tag">Laravel</span>
                 <span class="tech-tag">Flutter</span>
@@ -213,10 +202,15 @@
             </div>
             <div class="project-content">
               <h3>Starbhak-Mart</h3>
-              <p>
-                Starbhak-Mart a mobile food ordering application built using Flutter for the frontend and Supabase as the backend service and database. The app provides a smooth and user-friendly experience for browsing food menus, placing
-                orders, and tracking order status in real-time. It is designed to be cross-platform, running seamlessly on both Android and iOS devices.
-              </p>
+              <div class="project-description">
+                <p class="description-short">Starbhak-Mart a mobile food ordering application built using Flutter for the frontend and Supabase as the backend service and database.</p>
+                <p class="description-full" style="display: none">
+                  The app provides a smooth and user-friendly experience for browsing food menus, placing orders, and tracking order status in real-time. It is designed to be cross-platform, running seamlessly on both Android and iOS
+                  devices. Features include real-time order tracking, secure payment integration, user authentication, and an intuitive admin panel for restaurant management. The application also supports multiple payment methods and
+                  provides detailed analytics for restaurant owners.
+                </p>
+                <button class="show-more-btn" onclick="toggleDescription(this)">Show More</button>
+              </div>
               <div class="project-tech">
                 <span class="tech-tag">Flutter</span>
                 <span class="tech-tag">SupaBase</span>
@@ -236,10 +230,14 @@
             </div>
             <div class="project-content">
               <h3>GoodFood</h3>
-              <p>
-                GoodFood a web-based food ordering application developed entirely using Laravel. This project aims to simplify the food ordering process within a school environment by allowing users to browse menus, place orders, and manage
-                transactions online through a clean and responsive interface.
-              </p>
+              <div class="project-description">
+                <p class="description-short">GoodFood a web-based food ordering application developed entirely using Laravel for school environment.</p>
+                <p class="description-full" style="display: none">
+                  This project aims to simplify the food ordering process within a school environment by allowing users to browse menus, place orders, and manage transactions online through a clean and responsive interface. The application
+                  features user authentication, order management, payment processing, and an admin dashboard for managing menus and orders. Built with Laravel's robust framework, it ensures security and scalability.
+                </p>
+                <button class="show-more-btn" onclick="toggleDescription(this)">Show More</button>
+              </div>
               <div class="project-tech">
                 <span class="tech-tag">PHP</span>
                 <span class="tech-tag">Laravel</span>
@@ -260,11 +258,15 @@
             </div>
             <div class="project-content">
               <h3>QuickShop</h3>
-              <p>
-                QuickShop is a modern e-commerce platform built using the Laravel framework with Filament for the admin panel. This project is designed to provide a seamless online shopping experience for users while giving administrators a
-                powerful and user-friendly interface to manage the store. To handle secure and efficient transactions, Xendit is integrated as the payment gateway, supporting multiple payment methods including e-wallets, virtual accounts,
-                and credit cards.
-              </p>
+              <div class="project-description">
+                <p class="description-short">QuickShop is a modern e-commerce platform built using Laravel framework with Filament for the admin panel.</p>
+                <p class="description-full" style="display: none">
+                  This project is designed to provide a seamless online shopping experience for users while giving administrators a powerful and user-friendly interface to manage the store. To handle secure and efficient transactions,
+                  Xendit is integrated as the payment gateway, supporting multiple payment methods including e-wallets, virtual accounts, and credit cards. The platform includes inventory management, order tracking, customer management, and
+                  comprehensive analytics.
+                </p>
+                <button class="show-more-btn" onclick="toggleDescription(this)">Show More</button>
+              </div>
               <div class="project-tech">
                 <span class="tech-tag">Laravel</span>
                 <span class="tech-tag">MySQL</span>
@@ -286,10 +288,14 @@
             </div>
             <div class="project-content">
               <h3>Monefy</h3>
-              <p>
-                A simple finance tracking app built with Flutter, inspired by Monefy. It allows users to record income and expenses, view transaction history, and see financial summaries in a clean and intuitive interface. Built to help
-                users manage personal finances easily on mobile
-              </p>
+              <div class="project-description">
+                <p class="description-short">A simple finance tracking app built with Flutter, inspired by Monefy for personal finance management.</p>
+                <p class="description-full" style="display: none">
+                  It allows users to record income and expenses, view transaction history, and see financial summaries in a clean and intuitive interface. Built to help users manage personal finances easily on mobile devices. Features
+                  include categorized transactions, visual charts, budget tracking, and export functionality for financial reports.
+                </p>
+                <button class="show-more-btn" onclick="toggleDescription(this)">Show More</button>
+              </div>
               <div class="project-tech">
                 <span class="tech-tag">Flutter</span>
               </div>

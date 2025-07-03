@@ -87,18 +87,24 @@ const observerOptions = {
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
-      // Special handling for skill items
+      // Special handling for skill items - animate every time they enter
       if (entry.target.classList.contains("skill-item")) {
         console.log("Skill item entering viewport:", entry.target); // Debug log
         entry.target.classList.add("animate-in");
+        entry.target.classList.remove("animate-out");
       } else {
         // Add animation when element enters viewport
         entry.target.classList.add("fade-in-up");
         entry.target.classList.remove("fade-out-down");
       }
     } else {
-      // Remove animation when element leaves viewport (but keep skill items animated once triggered)
-      if (!entry.target.classList.contains("skill-item")) {
+      // For skill items, remove animation when leaving viewport
+      if (entry.target.classList.contains("skill-item")) {
+        entry.target.classList.remove("animate-in");
+        entry.target.classList.add("animate-out");
+        console.log("Skill item leaving viewport:", entry.target); // Debug log
+      } else {
+        // Remove animation when element leaves viewport for other elements
         entry.target.classList.remove("fade-in-up");
         entry.target.classList.add("fade-out-down");
       }
@@ -111,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const animateElements = document.querySelectorAll(".section-title, .about-text, .skill-category, .project-card, .contact-info, .contact-form");
   animateElements.forEach((el) => observer.observe(el));
 
-  // Observe skill items for scroll animation with a slight delay to ensure DOM is ready
+  // Observe skill items with main observer for re-triggering animation
   setTimeout(() => {
     const skillItems = document.querySelectorAll(".skill-item");
     console.log("Found skill items:", skillItems.length); // Debug log
@@ -119,8 +125,8 @@ document.addEventListener("DOMContentLoaded", () => {
       observer.observe(item);
       console.log(`Observing skill item ${index + 1}`); // Debug log
 
-      // Add a subtle entrance animation delay
-      item.style.transitionDelay = `${index * 0.1}s`;
+      // Add a subtle entrance animation delay - lebih smooth
+      item.style.transitionDelay = `${index * 0.15}s`;
     });
   }, 100);
 

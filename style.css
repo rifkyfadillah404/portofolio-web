@@ -518,6 +518,12 @@ section {
   object-fit: cover;
   object-position: center;
   border-radius: 20px;
+  transition: all 0.3s ease;
+  filter: grayscale(0);
+}
+
+.about-img-container:hover img {
+  filter: grayscale(100%);
 }
 
 /* Skills highlight in about text */

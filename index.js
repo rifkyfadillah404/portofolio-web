@@ -1,3 +1,50 @@
+// Loading Screen Animation
+document.addEventListener('DOMContentLoaded', function() {
+  // Add loading class to body
+  document.body.classList.add('loading');
+  
+  // Create loading particles
+  createLoadingParticles();
+  
+  // Simulate loading time and hide loading screen
+  const loadingScreen = document.getElementById('loading-screen');
+  const minLoadingTime = 2500; // Minimum loading time in milliseconds
+  const startTime = Date.now();
+  
+  // Wait for all resources to load
+  window.addEventListener('load', function() {
+    const loadTime = Date.now() - startTime;
+    const remainingTime = Math.max(0, minLoadingTime - loadTime);
+    
+    setTimeout(() => {
+      // Start fade out animation
+      loadingScreen.classList.add('fade-out');
+      document.body.classList.remove('loading');
+      document.body.classList.add('loaded');
+      
+      // Remove loading screen from DOM after animation
+      setTimeout(() => {
+        loadingScreen.style.display = 'none';
+      }, 800);
+    }, remainingTime);
+  });
+});
+
+// Create loading particles
+function createLoadingParticles() {
+  const particlesContainer = document.querySelector('.loading-particles');
+  const particleCount = 30;
+  
+  for (let i = 0; i < particleCount; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'loading-particle';
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.animationDelay = Math.random() * 6 + 's';
+    particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+    particlesContainer.appendChild(particle);
+  }
+}
+
 // Mobile Navigation Toggle
 const navToggle = document.getElementById("nav-toggle");
 const navMenu = document.getElementById("nav-menu");

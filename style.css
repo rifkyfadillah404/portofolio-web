@@ -1518,6 +1518,28 @@ section {
   box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
 }
 
+/* Demo Link Specific Styling */
+.demo-link {
+  background: rgba(240, 147, 251, 0.1);
+  border-color: rgba(240, 147, 251, 0.3);
+  color: #f093fb;
+}
+
+.demo-link:hover {
+  background: rgba(240, 147, 251, 0.2);
+  border-color: rgba(240, 147, 251, 0.5);
+  color: #ffffff;
+  box-shadow: 0 5px 15px rgba(240, 147, 251, 0.3);
+}
+
+.demo-link i {
+  color: #f093fb;
+}
+
+.demo-link:hover i {
+  color: #ffffff;
+}
+
 /* Show More Button Styles */
 .show-more-btn {
   background: linear-gradient(135deg, #00d4ff 0%, #ff00ff 100%);
